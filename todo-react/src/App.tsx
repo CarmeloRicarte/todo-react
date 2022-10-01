@@ -1,8 +1,8 @@
 import "./App.css";
-import TaskForm from "./components/task-form/TaskForm";
-import TaskList from "./components/task-list/TaskList";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 import { useEffect, useState } from "react";
-import { tasks as data, Task } from "./components/tasks";
+import { tasks as data, Task } from "./data/tasks";
 
 function App() {
   const [tasks, setTasks] = useState([] as Task[]);
@@ -10,13 +10,13 @@ function App() {
   // cuando estan los datos cargados, los seteamos al state al iniciar
   useEffect(() => setTasks(data), []);
 
-  function createTask(taskTitle: string): void {
+  function createTask(task: Task): void {
     setTasks([
       ...tasks,
       {
-        title: taskTitle,
+        title: task.title,
         id: tasks.length,
-        description: "Nueva tarea",
+        description: task.description,
       },
     ]);
   }

@@ -1,7 +1,7 @@
 export type Task = {
-  id: number;
   title: string;
   description: string;
+  id?: number;
 };
 
 export const tasks: Task[] = [
