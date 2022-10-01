@@ -1,4 +1,10 @@
-export const tasks = [
+export type Task = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+export const tasks: Task[] = [
   {
     id: 0,
     title: "Mi primera tarea",
