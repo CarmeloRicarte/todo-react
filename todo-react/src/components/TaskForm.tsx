@@ -9,6 +9,13 @@ function TaskForm({ createTask }: TaskFormProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  /**
+   * We're using the createTask function from the useTaskContext hook to create a new task.
+   * The createTask function takes an object with a title and description property.
+   * We're passing in the title and description from the state.
+   * After we create the task, we're clearing the title and description from the state.
+   * @param {any} e - any: The event object that is passed to the function.
+   */
   const handleSubmit = (e: any) => {
     e.preventDefault();
     createTask({
