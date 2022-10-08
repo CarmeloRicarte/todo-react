@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { Task } from "../data/tasks";
+import { useContext, useState } from "react";
+import { TaskContext } from "../context/TaskContext";
 
-interface TaskFormProps {
-  createTask: (taskTitle: Task) => void;
-}
-
-function TaskForm({ createTask }: TaskFormProps) {
+function TaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const createTask = useContext(TaskContext)?.createTask;
 
   /**
    * We're using the createTask function from the useTaskContext hook to create a new task.
@@ -18,10 +16,12 @@ function TaskForm({ createTask }: TaskFormProps) {
    */
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    createTask({
-      title,
-      description,
-    });
+    createTask &&
+      createTask({
+        id: Math.random(),
+        title,
+        description,
+      });
     // limpiamos los campos del form y state
     setTitle("");
     setDescription("");

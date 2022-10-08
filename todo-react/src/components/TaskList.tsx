@@ -1,21 +1,19 @@
+import { ITask } from "../@types/todo";
+import { TaskContext } from "../context/TaskContext";
 import TaskCard from "./TaskCard";
-import { Task } from "../data/tasks";
+import { useContext } from "react";
 
-interface TaskListProps {
-  tasks: Task[];
-  deleteTask: (taskId: number | undefined) => void;
-}
-
-function TaskList({ tasks, deleteTask }: TaskListProps) {
+function TaskList() {
+  const tasks = useContext(TaskContext)?.tasks;
   if (tasks && tasks.length === 0) {
     return <h1>No hay tareas aún</h1>;
   }
   return (
-    <div>
-      {tasks.map((task: Task) => (
-        <TaskCard key={task.id} task={task} deleteTask={deleteTask} />
+    <>
+      {tasks?.map((task: ITask) => (
+        <TaskCard key={task.id} id={task.id} />
       ))}
-    </div>
+    </>
   );
 }
 

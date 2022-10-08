@@ -1,10 +1,6 @@
-export type Task = {
-  title: string;
-  description: string;
-  id?: number;
-};
+import { ITask } from "../@types/todo";
 
-export const tasks: Task[] = [
+export const tasks: ITask[] = [
   {
     id: 0,
     title: "Mi primera tarea",
